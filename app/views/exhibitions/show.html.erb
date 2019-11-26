@@ -1,0 +1,22 @@
+<div class="page-header">
+  <%= link_to exhibitions_path, class: 'btn btn-default' do %>
+    All Exhibitions
+  <% end %>
+  <%= link_to edit_exhibition_path(@exhibition), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show exhibition</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @exhibition.name %></dd>
+
+  <dt>Star time:</dt>
+  <dd><%= @exhibition.star_time %></dd>
+
+  <dt>End time:</dt>
+  <dd><%= @exhibition.end_time %></dd>
+
+
+</dl>
