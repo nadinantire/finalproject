@@ -40,6 +40,8 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
+  config.stripe.secret_key = Rails.application.credentials.stripe[:production][:secret_key]
+config.stripe.publishable_key = Rails.application.credentials.stripe[:production][:publishable_key]
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil

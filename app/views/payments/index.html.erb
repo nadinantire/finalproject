@@ -1,0 +1,51 @@
+<%= content_for :page_title, 'Your donations' %>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-12 topspace-lg">
+      <h1>
+        Your payments
+      </h1>
+    </div>
+  </div>
+  <div class="row topspace-lg">
+    <div class="col-md-10 col-md-offset-1">
+      <%= render 'layouts/messages' %>
+      <div class="card box-shadow">
+        <h4>Payment details</h4>
+        <hr>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Payment ID</th>
+              <th>Amount</th>
+              <th>Payment method</th>
+              <th>Created</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @payments.each do |payment| %>
+              <tr>
+                <td><%= payment.id %></td>
+                <td><%= format_amount(payment.amount) %></td>
+                <td><%= payment.source.bank_name %>  ····<%= payment.source.last4 %></td>
+                <td><%= format_date(payment.created) %></td>
+                <td>
+                  <% if payment.refunded %>
+                    <span class="text-danger">
+                      <span class="fa fa-undo"></span> Refunded
+                    </span>
+                  <% else %>
+                    <span class="text-success">
+                      <span class="fa fa-check-circle"></span> Paid
+                    </span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

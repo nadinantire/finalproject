@@ -27,6 +27,8 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+#   config.stripe.secret_key = Rails.application.credentials.stripe[:development][:secret_key]
+# config.stripe.publishable_key = Rails.application.credentials.stripe[:development][:publishable_key]
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local

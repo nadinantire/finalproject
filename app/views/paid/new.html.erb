@@ -1,0 +1,71 @@
+<%= content_for :page_title, 'Plaid ACH example' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 topspace-lg text-center">
+      <h1>
+        Stripe ACH Demo
+      </h1>
+      <h4 class="text-muted">
+        Create test ACH payments
+      </h4>
+      <div class="topspace-lg">
+        <%= render 'layouts/messages' %>
+        <button class="btn btn-custom btn-lg btn-primary btn-block" id='link-button'>
+          Connect with Plaid
+        </button>
+      </div>
+      <div class="topspace">
+        <%= link_to "Enter bank details", new_banks_path, class: "btn btn-custom btn-lg btn-default btn-block" %>
+      </div>
+      <div class="topspace" id="error-message">
+      </div>
+      <div class="topspace-lg lato">
+        <hr>
+        <h4 class="text-muted"><i class="fa fa-lock"></i> Plaid test credentials</h4>
+        <strong>username:</strong> user_good
+        <br>
+        <strong>password:</strong> pass_good
+      </div>
+      <form id="ach-form" method="post" action="/plaid">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="hidden" name="public_token" id="public-token">
+        <input type="hidden" name="account_id" id="account-id">
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+<script>
+  var linkHandler = Plaid.create({
+    env: 'sandbox',
+    apiVersion: 'v2',
+    clientName: 'Stripe/Plaid Test',
+    key: '<%= ENV['PLAID_PUBLIC_KEY']%>',
+    product: ['auth'],
+    selectAccount: true,
+    onSuccess: function(public_token, metadata) {
+      // Disable the button
+      var linkButton = document.getElementById('link-button');
+      linkButton.disabled = true;
+      linkButton.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Connecting your account...";
+
+      // Append the token and account ID to the form
+      document.getElementById('public-token').value = ''+public_token;
+      document.getElementById('account-id').value = ''+metadata.account_id;
+
+      // Submit the form
+      document.getElementById('ach-form').submit();
+    },
+    onExit: function(err, metadata) {
+      // The user exited the Link flow.
+      if (err != null) {
+        document.getElementById('error-message').innerHTML = "<div class='alert alert-danger'>"+err.display_message+"</div>"
+      }
+    },
+  });
+
+  // Trigger the Link UI
+  document.getElementById('link-button').onclick = function() {
+    linkHandler.open();
+  };
+</script>
