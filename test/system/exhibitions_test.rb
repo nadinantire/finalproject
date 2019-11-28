@@ -14,10 +14,11 @@ class ExhibitionsTest < ApplicationSystemTestCase
     visit exhibitions_url
     click_on "New Exhibition"
 
+    fill_in "Date", with: @exhibition.date
     fill_in "End time", with: @exhibition.end_time
+    fill_in "Image", with: @exhibition.image
     fill_in "Name", with: @exhibition.name
-    fill_in "Star time", with: @exhibition.star_time
-    fill_in "User", with: @exhibition.user_id
+    fill_in "Start time", with: @exhibition.start_time
     click_on "Create Exhibition"
 
     assert_text "Exhibition was successfully created"
@@ -28,10 +29,11 @@ class ExhibitionsTest < ApplicationSystemTestCase
     visit exhibitions_url
     click_on "Edit", match: :first
 
+    fill_in "Date", with: @exhibition.date
     fill_in "End time", with: @exhibition.end_time
+    fill_in "Image", with: @exhibition.image
     fill_in "Name", with: @exhibition.name
-    fill_in "Star time", with: @exhibition.star_time
-    fill_in "User", with: @exhibition.user_id
+    fill_in "Start time", with: @exhibition.start_time
     click_on "Update Exhibition"
 
     assert_text "Exhibition was successfully updated"

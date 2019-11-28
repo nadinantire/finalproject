@@ -1,0 +1,18 @@
+<div class="page-header">
+  <%= link_to garelleys_path, class: 'btn btn-default' do %>
+    All Garelleys
+  <% end %>
+  <%= link_to edit_garelley_path(@garelley), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show garelley</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @garelley.name %></dd>
+
+  <dt>Image:</dt>
+  <dd><%= @garelley.image %></dd>
+
+</dl>

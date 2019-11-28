@@ -9,9 +9,13 @@
     <%= render 'shared/notices' %>
 
     <div class="container">
+    <%# <h2 class="primary">kindt museum</h2><br>
+    <p>Kandt House Museum, the former Natural History <br>Museum is located at KN 90 St, around one kilimiter from downtown.<br> This museum is formerly well known as Natural History Museum</p> %>
+    
+    
       <%= yield %>
     </div>
-<%= javascript_include_tag 'https://checkout.stripe.com/checkout.js'%>
-    <%= render 'shared/footer' %> %>
+<%= javascript_include_tag 'https://checkout.stripe.com/checkout.js' %>
+    <%= render 'shared/footer' %> 
   </body>
 </html>

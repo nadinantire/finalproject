@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_131632) do
+ActiveRecord::Schema.define(version: 2019_11_28_062345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,31 @@ ActiveRecord::Schema.define(version: 2019_11_26_131632) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "exhibitions", force: :cascade do |t|
+  create_table "artifacts", force: :cascade do |t|
     t.string "name"
-    t.datetime "star_time"
-    t.datetime "end_time"
-    t.bigint "user_id"
+    t.string "image"
+    t.text "description"
+    t.bigint "category_id"
+    t.text "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_exhibitions_on_user_id"
+    t.index ["category_id"], name: "index_artifacts_on_category_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exhibitions", force: :cascade do |t|
+    t.text "name"
+    t.time "start_time"
+    t.time "end_time"
+    t.text "image"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -43,6 +60,13 @@ ActiveRecord::Schema.define(version: 2019_11_26_131632) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "garelleys", force: :cascade do |t|
+    t.string "name"
+    t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -70,6 +94,17 @@ ActiveRecord::Schema.define(version: 2019_11_26_131632) do
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.string "phone"
+    t.string "slug"
+    t.bigint "exhibition_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exhibition_id"], name: "index_tickets_on_exhibition_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -87,6 +122,16 @@ ActiveRecord::Schema.define(version: 2019_11_26_131632) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "exhibitions", "users"
+  create_table "visits", force: :cascade do |t|
+    t.string "day_of_weeks"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "artifacts", "categories"
   add_foreign_key "services", "users"
+  add_foreign_key "tickets", "exhibitions"
+  add_foreign_key "tickets", "users"
 end

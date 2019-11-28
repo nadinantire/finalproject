@@ -21,9 +21,10 @@
         <th>Name</th>
     
 
-            <th>Star time</th>
+            <th>Start time</th>
             <th>End time</th>
-            <th>User</th>
+            <th>Image</th>
+            <th>Date</th>
             
       </tr>
     </thead>
@@ -35,9 +36,10 @@
             <td><%= link_to exhibition.name, exhibition %></td>
           
 
-                      <td><%= exhibition.star_time %></td>
+                      <td><%= exhibition.start_time %></td>
                       <td><%= exhibition.end_time %></td>
-                      <td><%= exhibition.user %></td>
+                      <td><%= exhibition.image %></td>
+                      <td><%= exhibition.date %></td>
           
           
         <% end %>

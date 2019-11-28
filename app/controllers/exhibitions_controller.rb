@@ -1,11 +1,10 @@
 class ExhibitionsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_exhibition, only: [:show, :edit, :update, :destroy]
 
   # GET /exhibitions
   # GET /exhibitions.json
   def index
-    @exhibitions = current_user.exhibitions.all
+    @exhibitions = Exhibition.all
   end
 
   # GET /exhibitions/1
@@ -26,7 +25,6 @@ class ExhibitionsController < ApplicationController
   # POST /exhibitions.json
   def create
     @exhibition = Exhibition.new(exhibition_params)
-    @exhibition.user_id = current_user.id
 
     respond_to do |format|
       if @exhibition.save
@@ -71,6 +69,6 @@ class ExhibitionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exhibition_params
-      params.require(:exhibition).permit(:name, :star_time, :end_time, :user_id)
+      params.require(:exhibition).permit(:name, :start_time, :end_time, :image, :date)
     end
 end

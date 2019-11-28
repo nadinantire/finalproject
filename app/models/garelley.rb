@@ -1,0 +1,2 @@
+class Garelley < ApplicationRecord
+end

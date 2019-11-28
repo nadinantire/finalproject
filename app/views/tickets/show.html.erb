@@ -1,0 +1,24 @@
+<div class="page-header">
+  <%= link_to tickets_path, class: 'btn btn-default' do %>
+    All Tickets
+  <% end %>
+  <%= link_to edit_ticket_path(@ticket), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show ticket</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Phone:</dt>
+  <dd><%= @ticket.phone %></dd>
+
+  <dt>Slug:</dt>
+  <dd><%= @ticket.slug %></dd>
+
+  <dt>Exhibition:</dt>
+  <dd><%= @ticket.exhibition %></dd>
+
+  <dt>User:</dt>
+  <dd><%= @ticket.user %></dd>
+
+</dl>

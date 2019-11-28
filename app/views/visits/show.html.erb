@@ -1,0 +1,21 @@
+<div class="page-header">
+  <%= link_to visits_path, class: 'btn btn-default' do %>
+    All Visits
+  <% end %>
+  <%= link_to edit_visit_path(@visit), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show visit</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Day of weeks:</dt>
+  <dd><%= @visit.day_of_weeks %></dd>
+
+  <dt>Start time:</dt>
+  <dd><%= @visit.start_time %></dd>
+
+  <dt>End time:</dt>
+  <dd><%= @visit.end_time %></dd>
+
+</dl>

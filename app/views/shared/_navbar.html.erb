@@ -6,8 +6,8 @@
 <% end %>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <div class="container">
-    <%= link_to Rails.configuration.application_name, root_path, class: "navbar-brand" %>
+  <div class="container"><h3>Kindt Museum</h3>
+    <%# <%= link_to Rails.configuration.application_name, root_path, class: "navbar-brand" %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -42,8 +42,14 @@
           </li>
 
         <% else %>
-          <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "HOME", visits_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ABOUT", visits_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "GARELLEY", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "EVENT", new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "BUY", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "CONTACT", new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "SIGN UP", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "LOGIN", new_user_session_path, class: "nav-link" %></li>
         <% end %>
       </ul>
     </div>

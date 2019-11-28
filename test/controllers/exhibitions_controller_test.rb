@@ -17,7 +17,7 @@ class ExhibitionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create exhibition" do
     assert_difference('Exhibition.count') do
-      post exhibitions_url, params: { exhibition: { end_time: @exhibition.end_time, name: @exhibition.name, star_time: @exhibition.star_time, user_id: @exhibition.user_id } }
+      post exhibitions_url, params: { exhibition: { date: @exhibition.date, end_time: @exhibition.end_time, image: @exhibition.image, name: @exhibition.name, start_time: @exhibition.start_time } }
     end
 
     assert_redirected_to exhibition_url(Exhibition.last)
@@ -34,7 +34,7 @@ class ExhibitionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update exhibition" do
-    patch exhibition_url(@exhibition), params: { exhibition: { end_time: @exhibition.end_time, name: @exhibition.name, star_time: @exhibition.star_time, user_id: @exhibition.user_id } }
+    patch exhibition_url(@exhibition), params: { exhibition: { date: @exhibition.date, end_time: @exhibition.end_time, image: @exhibition.image, name: @exhibition.name, start_time: @exhibition.start_time } }
     assert_redirected_to exhibition_url(@exhibition)
   end
 

@@ -30,7 +30,7 @@ Project name is kindt museum
 PROJECT DESCRIPTION
 --------------------
  
-Kind museum is project which will help tourists and people live in Rwanda to remember a Rwandan culture where it will post all material keeping in the museum and address of different museum having that material, schedule of how can visit that museum when we want to visit it.
+Kindt museum is project which will help tourists and people live in Rwanda to remember a Rwandan culture where it will post all material keeping in the museum and address of different museum having that material, schedule of how can visit that museum when we want to visit it.
 There is artifact that made by different artists but the problem is how to put on the market, kind museum it will help all those artists to put it on the museum and sell it online.
 
 VERSION
