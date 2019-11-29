@@ -4,15 +4,20 @@ Rails.application.routes.draw do
   resources :artifacts
   resources :categories
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :tickets
+ 
   resources :exhibitions
   resources :garelleys
   resources :visits
+  resources :exhibitions do
+    resources :tickets
+  end
   namespace :admin do
     resources :users
     resources :announcements
     resources :notifications
     resources :services
+
+  
 
     root to: "users#index"
     get '/card/new' => 'transaction#new_card', as: :add_payment_method
@@ -29,7 +34,10 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  # , controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root to: 'home#index'
   # root to: 'plaid#new'
   root 'transactions#index', as: :transaction 

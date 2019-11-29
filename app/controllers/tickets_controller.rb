@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-
+before_action :authenticate_user!
   # GET /tickets
   # GET /tickets.json
   def index
@@ -14,7 +14,9 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    @exhibition=Exhibition.find(params[:exhibition_id])
+    @ticket = @exhibition.tickets.build
+  
   end
 
   # GET /tickets/1/edit
@@ -24,11 +26,11 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    @ticket = Ticket.new(ticket_params)
 
+    @ticket = current_user.tickets.build(ticket_params)
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+        format.html { redirect_to exhibitions_path, notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
@@ -71,4 +73,4 @@ class TicketsController < ApplicationController
     def ticket_params
       params.require(:ticket).permit(:phone, :slug, :exhibition_id, :user_id)
     end
-end
+  end

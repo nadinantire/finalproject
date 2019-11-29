@@ -19,7 +19,7 @@
   <dd><%= @exhibition.end_time %></dd>
 
   <dt>Image:</dt>
-  <dd><%= @exhibition.image %></dd>
+  <dd><%= image_tag @exhibition.image.url.to_s %></dd>
 
   <dt>Date:</dt>
   <dd><%= @exhibition.date %></dd>

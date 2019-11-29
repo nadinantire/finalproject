@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id
   has_many :services
   has_many :exhibitions, dependent: :destroy
+  has_many :tickets, dependent: :destroy
 end

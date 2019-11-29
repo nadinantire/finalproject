@@ -3,13 +3,20 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+  config.current_user_method(&:current_user)
 
   ## == CancanCan ==
   # config.authorize_with :cancancan
+  config.authorize_with do |controller|
+    if current_user.nil?
+      redirect_to main_app.new_account_session_path, notice:'Please Login to Continue..'
+    elsif !current_user.admin?
+      redirect_to main_app.root_path, notice:'You are not Admin'
+    end
+  end
 
   ## == Pundit ==
   # config.authorize_with :pundit
