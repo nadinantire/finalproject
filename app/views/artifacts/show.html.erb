@@ -1,0 +1,27 @@
+<div class="page-header">
+  <%= link_to artifacts_path, class: 'btn btn-default' do %>
+    All Artifacts
+  <% end %>
+  <%= link_to edit_artifact_path(@artifact), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show artifact</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @artifact.name %></dd>
+
+  <dt>Image:</dt>
+  <dd><%= @artifact.image %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @artifact.description %></dd>
+
+  <dt>Category:</dt>
+  <dd><%= @artifact.category %></dd>
+
+  <dt>Amount:</dt>
+  <dd><%= @artifact.amount %></dd>
+
+</dl>

@@ -1,0 +1,54 @@
+<%= form_with(model: artifact, local: true) do |form| %>
+  <% if artifact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(artifact.errors.count, "error") %> prohibited this artifact from being saved:</h2>
+
+      <ul>
+      <% artifact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= form.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category_id %>
+    <%= form.text_field :category_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :amount %>
+    <%= form.text_field :amount, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if artifact.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', artifact, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if artifact.persisted? %>
+      <%= link_to "Cancel", artifact, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", artifacts_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

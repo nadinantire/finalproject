@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -70,6 +70,8 @@ gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
+gem 'carrierwave', '~> 0.5'
+gem 'carrierwave_backgrounder', :git => 'https://github.com/lardawge/carrierwave_backgrounder.git'
 gem 'name_of_person', '~> 1.1'
 gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-github', '~> 1.3'
@@ -81,3 +83,4 @@ gem 'webpacker', '~> 4.0.1'
 gem 'simple_calendar', '~> 2.3'
 gem 'trix', '~> 0.9.9'
 gem 'stripe-rails'
+gem 'rails_admin'

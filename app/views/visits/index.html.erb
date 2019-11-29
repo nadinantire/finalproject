@@ -1,0 +1,109 @@
+
+<div class="row">
+<div><%= image_tag 'modern.JPG', class: "image"%></div>
+  <div class="col-sm-6">
+    <h1>Visiting schedule</h1>
+  </div>
+
+  <div class="col-sm-6 text-right">
+  <%= link_to new_visit_path, class: 'btn btn-primary' do %>
+    Add New Visit
+  <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+    
+
+            <th>Day of weeks</th>
+            <th>Start time</th>
+            <th>End time</th>
+            
+          <th></th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @visits.each do |visit| %>
+        <%= content_tag :tr, id: dom_id(visit), class: dom_class(visit) do %>
+          
+
+                      <td><%= visit.day_of_weeks %></td>
+                      <td><%= visit.start_time %></td>
+                      <td><%= visit.end_time %></td>
+          
+          
+            <td><%= link_to 'Show', visit %></td>
+          
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<section class="service-area pt-100" id="about">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-service">
+							  <span class="lnr lnr-clock"></span>
+							  <h4>Openning Hours</h4>
+							  <p>
+							  	Mon - Fri: 10.00am to 05.00pm
+								Sat: 12.00pm to 03.00 pm
+								Sunday Closed
+							  </p>						 	
+							  <div class="overlay">
+							    <div class="text">
+							    	<p>
+							    		Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features.that we use in life
+							    	</p>
+							    	<a href="#" class="text-uppercase primary-btn">Buy ticket</a>
+							    </div>
+							  </div>
+							</div>							
+						</div>
+						<div class="col-lg-4">
+							<div class="single-service">
+							  <span class="lnr lnr-rocket"></span>
+							  <h4>Ongoing Exhibitions</h4>
+							  <p>
+							  	Mon - Fri: 10.00am to 05.00pm
+								Sat: 12.00pm to 03.00 pm
+								Sunday Closed
+							  </p>						 	
+							  <div class="overlay">
+							    <div class="text">
+							    	<p>
+							    		Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features.that we use in life
+							    	</p>
+							    	<a href="#" class="text-uppercase primary-btn">Buy ticket</a>
+							    </div>
+							  </div>
+							</div>							
+						</div>
+						<div class="col-lg-4">
+							<div class="single-service">
+							  <span class="lnr lnr-briefcase"></span>
+							  <h4>Openning Events</h4>
+							  <p>
+							  	Mon - Fri: 10.00am to 05.00pm
+								Sat: 12.00pm to 03.00 pm
+								Sunday Closed
+							  </p>						 	
+							  <div class="overlay">
+							    <div class="text">
+							    	<p>
+							    		Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features.that we use in life
+							    	</p>
+							    	<a href="#" class="text-uppercase primary-btn">Buy ticket</a>
+							    </div>
+							  </div>
+							</div>							
+						</div>												
+					</div>
+				</div>	
+			</section>

@@ -12,11 +12,16 @@
   <dt>Name:</dt>
   <dd><%= @exhibition.name %></dd>
 
-  <dt>Star time:</dt>
-  <dd><%= @exhibition.star_time %></dd>
+  <dt>Start time:</dt>
+  <dd><%= @exhibition.start_time %></dd>
 
   <dt>End time:</dt>
   <dd><%= @exhibition.end_time %></dd>
 
+  <dt>Image:</dt>
+  <dd><%= image_tag @exhibition.image.url.to_s %></dd>
+
+  <dt>Date:</dt>
+  <dd><%= @exhibition.date %></dd>
 
 </dl>

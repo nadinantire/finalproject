@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phone: MyString
+  slug: MyString
+  exhibition: one
+  user: one
+
+two:
+  phone: MyString
+  slug: MyString
+  exhibition: two
+  user: two
